@@ -19,10 +19,14 @@ jobs:
     name: Quality checks
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -41,6 +45,11 @@ jobs:
 
       - name: Unit tests with coverage
         run: npm run test:ci
+
+      # Secrets are unavailable to Dependabot and fork PRs, so the scan is skipped there.
+      - name: SonarQube Cloud scan
+        if: env.SONAR_TOKEN != ''
+        uses: SonarSource/sonarqube-scan-action@v8
 
       - name: Security audit
         run: npm audit --audit-level=high
