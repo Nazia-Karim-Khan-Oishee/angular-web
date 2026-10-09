@@ -7,6 +7,6 @@ import { Component, signal } from '@angular/core';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly greeting = signal('Hello there!');
+  protected readonly greeting = signal('Hi there!');
   protected readonly letters = this.greeting().split('');
 }
