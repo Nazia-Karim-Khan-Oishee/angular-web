@@ -1,0 +1,17 @@
+<main class="stage">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <section class="card">
+    <span class="wave" aria-hidden="true">👋</span>
+    <h1 [attr.aria-label]="greeting()">
+      @for (letter of letters; track $index) {
+        <span class="letter" [style.animation-delay.ms]="$index * 90" aria-hidden="true">
+          {{ letter === ' ' ? '\u00A0' : letter }}
+        </span>
+      }
+    </h1>
+    <p class="subtitle">Welcome here</p>
+  </section>
+</main>
