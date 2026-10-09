@@ -5,7 +5,9 @@ updates:
     target-branch: develop
     schedule:
       interval: weekly
-    open-pull-requests-limit: 5
+    groups:
+      all-npm:
+        patterns: ['*']
 
   - package-ecosystem: github-actions
     directory: /
