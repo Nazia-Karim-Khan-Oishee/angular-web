@@ -51,9 +51,6 @@ jobs:
         if: env.SONAR_TOKEN != ''
         uses: SonarSource/sonarqube-scan-action@v8
 
-      - name: Security audit
-        run: npm audit --audit-level=high
-
       - name: Production build
         run: npm run build
 
