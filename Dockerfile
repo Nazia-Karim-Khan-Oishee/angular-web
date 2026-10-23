@@ -6,6 +6,7 @@ COPY . .
 RUN npm run build
 
 
+
 FROM nginx:stable-alpine
 LABEL org.opencontainers.image.source="https://github.com/Nazia-Karim-Khan-Oishee/angular-web"
 RUN rm -rf /usr/share/nginx/html/*
