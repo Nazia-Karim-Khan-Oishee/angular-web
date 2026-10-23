@@ -1,15 +1,25 @@
+# Name shown in the GitHub "Actions" tab.
 name: CI
 
+# WHEN does this workflow run?
 on:
+  # Every time code is pushed to develop or main (e.g. right after a merge).
   push:
     branches: [develop, main]
+  # Every time a pull request is opened or updated that targets develop or main.
   pull_request:
     branches: [develop, main]
+  # Adds a "Run workflow" button so it can also be started by hand.
   workflow_dispatch:
 
+# WHAT is the workflow allowed to do?
+# Read-only access to the repo code. Nothing more, which is safer if something goes wrong.
 permissions:
   contents: read
 
+# What if two runs start for the same branch?
+# Group runs by branch; when a newer push arrives, cancel the older run
+# so we don't waste time checking outdated code.
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
