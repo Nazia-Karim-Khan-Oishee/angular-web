@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+.angular
+.git
+.github
+.vscode
+Dockerfile
+Jenkinsfile
+*.md
